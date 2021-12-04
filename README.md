@@ -16,6 +16,12 @@ Clone the project
 gh repo clone pro-chat-app/graphql-api
 ```
 
+Then, go to the directory created and generate a `.env` file by copying `.env.example` and edit it with your configuration.
+
+Run the commande `yarn` OR `npm install` (depends of which one you prefer) to install application dependencies.
+
+Launch dev server by running `yarn start:dev`.
+
 ### Launch devcontainers
 
 Press `Ctrl + Shift + P` then click on `Devcontainers: Open on devcontainers`.
