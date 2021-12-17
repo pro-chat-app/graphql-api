@@ -4,7 +4,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import configuration from './config/configuration';
-import { HelloWorldModule } from './hello-world/hello-world.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -22,9 +23,9 @@ import { HelloWorldModule } from './hello-world/hello-world.module';
       useFactory: (config: ConfigService) => config.get('database'),
       inject: [ConfigService],
     }),
-    HelloWorldModule,
+    UserModule,
+    AuthModule,
   ],
-  controllers: [],
   providers: [],
 })
 export class AppModule {}

@@ -2,6 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateUserInput {
+  birthday: DateTime!
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  login(loginUserInput: LoginUserInput!): LoginResponse!
+}
+
 type Query {
-  helloWorld: String!
+  getAllUsers: [User!]!
+}
+
+type User {
+  birthday: DateTime!
+  email: String!
+  firstName: String!
+  id: String!
+  isBlocked: Boolean!
+  isEnabled: Boolean!
+  lastName: String!
+  status: Float!
 }
