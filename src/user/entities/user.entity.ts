@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum StatusEnum {
   DISCONNECTED = 0,
-  CONNECT = 1,
+  CONNECTED = 1,
   AFK = 2,
   DO_NOT_DISTURB = 3,
 }
@@ -30,12 +30,12 @@ export class UserEntity {
   @Column()
   birthday: Date;
 
-  @Column({ enum: StatusEnum })
+  @Column({ type: 'enum', enum: StatusEnum, default: StatusEnum.DISCONNECTED })
   status: StatusEnum;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: true })
   isEnabled: boolean;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   isBlocked: boolean;
 }

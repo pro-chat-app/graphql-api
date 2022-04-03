@@ -44,4 +44,5 @@ type User {
   isEnabled: Boolean!
   lastName: String!
   status: Float!
+  username: String!
 }
