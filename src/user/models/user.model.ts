@@ -32,4 +32,7 @@ export class User {
 
   @Field()
   isBlocked: boolean;
+
+  @Field()
+  isAdmin: boolean;
 }

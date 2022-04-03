@@ -27,6 +27,7 @@ input LoginUserInput {
 }
 
 type Mutation {
+  createDefaultAdminUser(createUserInput: CreateUserInput!): User!
   createUser(createUserInput: CreateUserInput!): User!
   login(loginUserInput: LoginUserInput!): LoginResponse!
 }
@@ -40,6 +41,7 @@ type User {
   email: String!
   firstName: String!
   id: String!
+  isAdmin: Boolean!
   isBlocked: Boolean!
   isEnabled: Boolean!
   lastName: String!

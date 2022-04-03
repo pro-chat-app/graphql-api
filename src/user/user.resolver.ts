@@ -16,4 +16,11 @@ export class UserResolver {
   async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
     return await this.userService.create(createUserInput);
   }
+
+  @Mutation(() => User)
+  async createDefaultAdminUser(
+    @Args('createUserInput') createUserInput: CreateUserInput,
+  ) {
+    return await this.userService.createDefaultAdminUser(createUserInput);
+  }
 }

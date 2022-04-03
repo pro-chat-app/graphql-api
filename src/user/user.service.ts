@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
@@ -32,6 +32,31 @@ export class UserService {
     user.username = createUserInput.username;
     user.password = await bcrypt.hash(createUserInput.password, saltOrRound);
     user.status = StatusEnum.DISCONNECTED;
+
+    return await this.userRepository.save(user);
+  }
+
+  async createDefaultAdminUser(createUserInput: CreateUserInput) {
+    const adminUsers = await this.userRepository.find({
+      where: {
+        isAdmin: true,
+      },
+    });
+
+    if (adminUsers.length > 0) {
+      throw new ForbiddenException();
+    }
+
+    const user = new UserEntity();
+
+    user.email = createUserInput.email;
+    user.firstName = createUserInput.firstName;
+    user.lastName = createUserInput.lastName;
+    user.birthday = createUserInput.birthday;
+    user.username = createUserInput.username;
+    user.password = await bcrypt.hash(createUserInput.password, saltOrRound);
+    user.status = StatusEnum.DISCONNECTED;
+    user.isAdmin = true;
 
     return await this.userRepository.save(user);
   }

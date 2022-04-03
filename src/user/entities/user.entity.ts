@@ -38,4 +38,7 @@ export class UserEntity {
 
   @Column({ type: 'boolean', default: false })
   isBlocked: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  isAdmin: boolean;
 }
