@@ -10,4 +10,7 @@ export default () => ({
     entities: ['dist/**/*.entity{.ts,.js}'],
     synchronize: process.env.NODE_ENV !== 'production',
   },
+  jwt: {
+    token: process.env.JWT_SECRET,
+  },
 });
